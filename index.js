@@ -6,6 +6,8 @@ const helmet = require("helmet");
 const morgan = require("morgan");
 const userRoute = require("./routes/users");
 const authRoute = require("./routes/auth");
+const convRoute = require("./routes/conversations");
+const messageRoute = require("./routes/messages");
 
 dotenv.config();
 
@@ -17,6 +19,8 @@ app.use(morgan("common"));
 //Routes
 app.use("/api/users", userRoute)
 app.use("/api/auth", authRoute)
+app.use("/api/conversations", convRoute)
+app.use("/api/messages", messageRoute)
 
 mongoose.connect(process.env.MONGO_URL, {useNewUrlParser: true},()=>{
     console.log("Connected to MongoDB")
